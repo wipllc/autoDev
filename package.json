@@ -1,5 +1,5 @@
 {
-	"name": "small-mountain-9e87",
+	"name": "mute-king-bccf",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -12,13 +12,10 @@
 		"typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
 	},
 	"dependencies": {
-		"@cloudflare/containers": "^0.0.19",
-		"@react-router/fs-routes": "^7.6.3",
 		"isbot": "^5.1.27",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
-		"react-router": "^7.5.3",
-		"react-router-dom": "^7.6.3"
+		"react-router": "^7.5.3"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "^1.0.12",
