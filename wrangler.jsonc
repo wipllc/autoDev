@@ -17,8 +17,7 @@
 		"bindings": [
 			{
 				"name": "CHATROOM_DURABLE_OBJECT",
-				"class_name": "ChatRoom",
-				"script_name": "auto-dev"
+				"class_name": "ChatRoom"
 			}
 		]
 	}

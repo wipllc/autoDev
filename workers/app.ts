@@ -152,22 +152,24 @@ const requestHandler = createRequestHandler(
   import.meta.env.MODE
 );
 
+async function fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  const url = new URL(request.url);
+  
+  // Handle chat WebSocket connections and API requests
+  if (url.pathname.startsWith("/chat") || url.pathname.startsWith("/api")) {
+    const roomId = url.searchParams.get("room") || "general";
+    const durableObjectId = env.CHATROOM_DURABLE_OBJECT.idFromName(roomId);
+    const durableObject = env.CHATROOM_DURABLE_OBJECT.get(durableObjectId);
+    
+    return durableObject.fetch(request);
+  }
+  
+  // Handle all other requests with React Router
+  return requestHandler(request, {
+    cloudflare: { env, ctx },
+  });
+}
+
 export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-    
-    // Handle chat WebSocket connections and API requests
-    if (url.pathname.startsWith("/chat") || url.pathname.startsWith("/api")) {
-      const roomId = url.searchParams.get("room") || "general";
-      const durableObjectId = env.CHATROOM_DURABLE_OBJECT.idFromName(roomId);
-      const durableObject = env.CHATROOM_DURABLE_OBJECT.get(durableObjectId);
-      
-      return durableObject.fetch(request);
-    }
-    
-    // Handle all other requests with React Router
-    return requestHandler(request, {
-      cloudflare: { env, ctx },
-    });
-  },
+  fetch
 } satisfies ExportedHandler<Env>;
