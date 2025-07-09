@@ -15,8 +15,7 @@ A modern, mobile-friendly chat room application built with Cloudflare Workers, D
 
 ### Backend (Cloudflare Workers + Durable Objects)
 
-- **`workers/app.ts`** - Main worker that handles routing between React Router and chat functionality
-- **`workers/chatroom.ts`** - Durable Object class that manages chat room state and WebSocket connections
+- **`workers/app.ts`** - Main worker with ChatRoom Durable Object class and routing logic
 - **`wrangler.jsonc`** - Configuration for Cloudflare Workers and Durable Objects
 
 ### Frontend (React Router + Tailwind CSS)
