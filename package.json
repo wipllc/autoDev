@@ -4,8 +4,9 @@
 	"type": "module",
 	"scripts": {
 		"build": "react-router build",
-		"cf-typegen": "wrangler types",
-		"deploy": "npm run build && wrangler deploy",
+		"cf-typegen": "npx wrangler types",
+		"deploy": "npm run build && npx wrangler deploy --compatibility-date=2025-04-04",
+		"deploy:migration": "npm run build && npx wrangler deploy --compatibility-date=2025-04-04",
 		"dev": "react-router dev",
 		"postinstall": "npm run cf-typegen",
 		"preview": "npm run build && vite preview",
